@@ -1,4 +1,5 @@
-import { Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { findRecipe } from '../../selectors/recipes';
@@ -12,13 +13,16 @@ import Ingredients from './Ingredients/Ingredients';
 import './style.scss';
 
 function Recipe() {
-  const recipe = useSelector((state) =>
-    findRecipe(state.recipes.list, 'crepes-raffinees')
-  );
+  const { slug } = useParams();
 
-  if (!recipe) {
-    return <Navigate to="/error" replace />;
-  }
+  const key = `recipe-${slug}`;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [key]);
+
+  const recipe = useSelector((state) => findRecipe(state.recipes.list, slug));
+
   return (
     <Page>
       <AppHeader />

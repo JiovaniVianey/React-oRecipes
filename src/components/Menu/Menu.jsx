@@ -1,5 +1,6 @@
 // Menu.jsx
 import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchRecipes } from '../../actions/recipes';
 
@@ -14,19 +15,26 @@ const Menu = () => {
 
   const recipes = useSelector((state) => state.recipes.list);
 
+  const navigate = useNavigate();
+
+  const handleNavigate = (recipeSlug) => {
+    navigate(`/recipe/${recipeSlug}`);
+  };
+
   return (
     <nav className="menu">
-      <a className="menu-link menu-link--active" href="/">
+      <Link className="menu-link menu-link--active" to="/">
         Accueil
-      </a>
+      </Link>
       {recipes.map((recipe) => (
-        <a
+        <Link
           key={recipe.id}
           className="menu-link"
-          href={`/recipe/${recipe.slug}`}
+          to={`/recipe/${recipe.slug}`}
+          onClick={() => handleNavigate(recipe.slug)}
         >
           {recipe.title}
-        </a>
+        </Link>
       ))}
     </nav>
   );

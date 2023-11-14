@@ -24,7 +24,7 @@ function App(props) {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/recipe/:slug" element={<Recipe />} />
-          <Route path="*" element={<Error />} />{' '}
+          <Route path="*" element={<Error />} />
         </Routes>
       </div>
     </Router>
