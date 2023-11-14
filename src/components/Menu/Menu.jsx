@@ -1,9 +1,17 @@
 // Menu.jsx
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchRecipes } from '../../actions/recipes';
 
 import './style.scss';
 
 const Menu = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchRecipes());
+  }, [dispatch]);
+
   const recipes = useSelector((state) => state.recipes.list);
 
   return (
