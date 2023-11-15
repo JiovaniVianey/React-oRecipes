@@ -11,7 +11,7 @@ const Home = () => {
       <AppHeader />
       <Content
         title="Les recettes oRecipes"
-        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, explicabo."
+        text="Hollup, LET THEM COOK !!"
         recipes={recipes}
       />
     </Page>
