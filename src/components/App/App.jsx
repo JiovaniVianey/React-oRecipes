@@ -1,5 +1,8 @@
-import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { fetchRecipes } from '../../actions/recipes';
 
 import Menu from '../Menu/Menu';
 import Home from '../Home/Home';
@@ -12,6 +15,13 @@ import './style.scss';
 
 function App(props) {
   const { loading } = props;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const action = fetchRecipes();
+    dispatch(action);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (loading) {
     return <Loading />;

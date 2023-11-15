@@ -23,21 +23,23 @@ function Recipe() {
 
   const recipe = useSelector((state) => findRecipe(state.recipes.list, slug));
 
-  return (
-    <Page>
-      <AppHeader />
-      <div className="recipe">
-        <Header
-          name={recipe.title}
-          thumbnail={recipe.thumbnail}
-          author={recipe.author}
-          difficulty={recipe.difficulty}
-        />
-        <Ingredients list={recipe.ingredients} />
-        <Instructions steps={recipe.instructions} />
-      </div>
-    </Page>
-  );
+  if (recipe) {
+    return (
+      <Page>
+        <AppHeader />
+        <div className="recipe">
+          <Header
+            name={recipe.title}
+            thumbnail={recipe.thumbnail}
+            author={recipe.author}
+            difficulty={recipe.difficulty}
+          />
+          <Ingredients list={recipe.ingredients} />
+          <Instructions steps={recipe.instructions} />
+        </div>
+      </Page>
+    );
+  }
 }
 
 export default Recipe;

@@ -9,7 +9,7 @@ const reducer = (state = initialState, action = {}) => {
     case SET_RECIPES:
       return {
         ...state,
-        list: action.payload,
+        list: action.recipes,
       };
 
     default:

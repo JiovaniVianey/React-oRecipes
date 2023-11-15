@@ -3,7 +3,7 @@ export const FETCH_RECIPES = 'FETCH_RECIPES';
 
 export const setRecipes = (recipes) => ({
   type: SET_RECIPES,
-  payload: recipes,
+  recipes,
 });
 
 export const fetchRecipes = () => ({
