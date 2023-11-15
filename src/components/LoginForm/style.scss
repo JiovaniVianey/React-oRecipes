@@ -1,14 +1,17 @@
 @use 'src/styles/variables';
 
 .login-form {
-  
+  display: inline-block;
+  padding-left: 20%;
+  flex-wrap: nowrap;
+
   &-element {
     display: flex;
     align-items: center;
   }
 
   &-message {
-    margin: .3em 1em;
+    margin: 0.3em 1em;
   }
 
   &-logged {
@@ -21,9 +24,9 @@
     font-size: 1em;
     color: #fff;
     background-color: variables.$color;
-    border-radius: .3em;
+    border-radius: 0.3em;
     border: 0;
-    padding: .7em;
+    padding: 0.7em;
     height: 2.5em;
   }
 }
