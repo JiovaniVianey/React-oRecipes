@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { PropTypes } from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { fetchRecipes } from '../../actions/recipes';
 
@@ -27,8 +26,8 @@ Et on utiliserait contains sur ce tableau avec l'id de la recette
 
 */
 
-function App(props) {
-  const { loading } = props;
+function App() {
+  const isRecipesLoaded = useSelector((state) => state.recipes.isRecipesLoaded);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,7 +36,7 @@ function App(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (loading) {
+  if (!isRecipesLoaded) {
     return <Loading />;
   }
 
@@ -54,13 +53,5 @@ function App(props) {
     </Router>
   );
 }
-
-App.propTypes = {
-  loading: PropTypes.bool,
-};
-
-App.defaultProps = {
-  loading: false,
-};
 
 export default App;

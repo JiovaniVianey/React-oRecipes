@@ -3,6 +3,7 @@ import { SET_RECIPES, SET_FAVORITE_RECIPES } from '../actions/recipes';
 export const initialState = {
   list: [],
   favorites: [],
+  isRecipesLoaded: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -11,6 +12,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         list: action.recipes,
+        isRecipesLoaded: true,
       };
     case SET_FAVORITE_RECIPES:
       return {
