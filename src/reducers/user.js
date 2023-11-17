@@ -21,15 +21,9 @@ const authReducer = (state = initialState, action = {}) => {
         error: null,
       };
     case CHANGE_FIELD:
-      if (action.identifier === 'email') {
-        return {
-          ...state,
-          email: action.newValue,
-        };
-      }
       return {
         ...state,
-        password: action.newValue,
+        [action.identifier]: action.newValue,
       };
     case LOGIN_SUCCESS:
       return {
