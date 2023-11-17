@@ -7,9 +7,10 @@ export const loginRequest = () => ({
   type: LOGIN_REQUEST,
 });
 
-export const loginSuccess = (nickname) => ({
+export const loginSuccess = (nickname, token) => ({
   type: LOGIN_SUCCESS,
   nickname,
+  token,
 });
 
 export const logout = () => ({

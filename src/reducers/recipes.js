@@ -1,7 +1,8 @@
-import { SET_RECIPES } from '../actions/recipes';
+import { SET_RECIPES, SET_FAVORITE_RECIPES } from '../actions/recipes';
 
 export const initialState = {
   list: [],
+  favorites: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -11,7 +12,11 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         list: action.recipes,
       };
-
+    case SET_FAVORITE_RECIPES:
+      return {
+        ...state,
+        favorites: action.recipes,
+      };
     default:
       return state;
   }

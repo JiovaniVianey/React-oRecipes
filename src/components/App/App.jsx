@@ -13,6 +13,20 @@ import Loading from './Loading/Loading';
 
 import './style.scss';
 
+/*
+
+(bonus) utiliser les recettes préférées. 
+
+  - sur la page d'accueil, mettre en valeur les recettes préférées (icône étoile)
+
+Détails : il faudrait qu'on mette en place un affichage spécial pour Card, et quand on
+affiche une recette avec Card il faut pouvoir déterminer si cette recette fait partie des
+préférées.
+Pour ça, on pourrait extraire les id des recettes préférées (map) : [12345, 58]
+Et on utiliserait contains sur ce tableau avec l'id de la recette
+
+*/
+
 function App(props) {
   const { loading } = props;
   const dispatch = useDispatch();

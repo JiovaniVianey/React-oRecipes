@@ -11,6 +11,7 @@ export const initialState = {
   nickname: '',
   email: '',
   password: '',
+  token: '',
 };
 
 const authReducer = (state = initialState, action = {}) => {
@@ -30,6 +31,7 @@ const authReducer = (state = initialState, action = {}) => {
         ...state,
         isLogged: true,
         nickname: action.nickname,
+        token: action.token,
         email: '',
         password: '',
       };

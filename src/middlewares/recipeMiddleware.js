@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { FETCH_RECIPES, setRecipes } from '../actions/recipes';
+import {
+  FETCH_FAVORITE_RECIPES,
+  FETCH_RECIPES,
+  setRecipes,
+  setFavoriteRecipes,
+} from '../actions/recipes';
 
 const recipeMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -14,7 +19,23 @@ const recipeMiddleware = (store) => (next) => (action) => {
           console.error('Erreur lors de la récupération des recettes :', error);
         });
       break;
-
+    case FETCH_FAVORITE_RECIPES:
+      axios
+        .get(
+          // URL
+          'http://localhost:3001/favorites',
+          // options (notamment les headers)
+          {
+            headers: {
+              // nom: contenu
+              Authorization: `Bearer ${store.getState().user.token}`,
+            },
+          }
+        )
+        .then((response) => {
+          store.dispatch(setFavoriteRecipes(response.data));
+        });
+      break;
     default:
   }
 
